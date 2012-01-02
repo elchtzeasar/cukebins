@@ -7,7 +7,7 @@
 
 namespace cukebins {
 
-void acceptWireProtocol(int port) {
+void acceptWireProtocol(unsigned int port) {
     cukebins::internal::SocketServer<cukebins::internal::WireProtocol> server(port);
     server.accept();
 }
@@ -15,10 +15,10 @@ void acceptWireProtocol(int port) {
 
 int main(int argc, char **argv) {
     try {
-        int port = 3902;
+    	unsigned int port = 3902;
         if (argc > 1) {
             std::string firstArg(argv[1]);
-            port = ::cukebins::internal::fromString<int>(firstArg);
+            port = ::cukebins::internal::fromString<unsigned int>(firstArg);
         }
         std::clog << "Listening on port " << port << std::endl;
         ::cukebins::acceptWireProtocol(port);
